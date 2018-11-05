@@ -67,7 +67,7 @@
                         <h4><a href="item.php?id={$row['product_id']}">{$row['product_title']}</a>
                         </h4>
                         <p>{$row['short_desc']}</p>
-                        <a class="btn btn-primary" target="_blank" href="item.php?id={$row['product_id']}">Add to Cart</a>
+                        <a class="btn btn-primary" target="_blank" href="cart.php?add={$row['product_id']}">Add to Cart</a>
                     </div>
                     
                 </div>
@@ -171,4 +171,28 @@ echo $product;
         }
     }
 
+    function send_message() {
+        if(isset($_POST['submit'])) {
+
+            $to        = "someEmailaddress@gmail.com";
+            $from_name = $_POST['name'];
+            $subject   = $_POST['subject'];
+            $email     = $_POST['email'];
+            $message   = $_POST['message'];
+        
+            $headers = "From: {$from_name} {$email}";
+
+            $result = mail($to, $subject, $message, $headers);
+        
+            if(!$result) {
+                set_message("Sorry we could not send your message");
+                redirect("contact.php");
+            }
+
+            else {
+                set_message("Your message has been sent.");
+                redirect("contact.php");
+            }
+        }
+    }
 ?>
