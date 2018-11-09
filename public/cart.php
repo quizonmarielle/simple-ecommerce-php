@@ -4,8 +4,26 @@
 
     if(isset($_GET['add'])) {
 
-        $_SESSION['product_' . $_GET['add']] +=1;
+        $query = query("SELECT * FROM products WHERE product_id=" . escape_string($_GET['add']). " ");
+        confirm($query);
 
-        redirect("index.php");
+        while($row = fetch_array($query)) {
+
+            if($row = fetch_array($query)) {
+                if($row['product_quantity'] != $_SESSION['product_' .$_GET['add']]) {
+                    $_SESSION['product_' . $_GET['add']]+=1;
+                    redirect("checkout.php");
+                }
+
+                else {
+                    set_message("We only have" . $row['product_quantity'] . " " . "Available");
+                    redirect(checkout.php);
+                }
+            }
+        }
+        
+        // $_SESSION['product_' . $_GET['add']] +=1;
+
+        // redirect("index.php");
     }
 ?>

@@ -2,9 +2,7 @@
 
 <?php include(TEMPLATE_FRONT . DS . "header.php"); ?>
 
-<?php
-
-?>
+<?php echo $_SESSION['product_1']; ?>
     <!-- Page Content -->
     <div class="container">
 
