@@ -3,15 +3,6 @@
 
 <?php include(TEMPLATE_FRONT . DS . "header.php"); ?>
 
-<?php 
-
-if(isset($_SESSION['product_1'])) {
-
-    echo $_SESSION['item-total'];
-}
-
-?>
-
     <!-- Page Content -->
     <div class="container">
 
@@ -51,7 +42,7 @@ if(isset($_SESSION['product_1'])) {
 
 <tr class="cart-subtotal">
 <th>Items:</th>
-<td><span class="amount">4</span></td>
+<td><span class="amount"><?php echo isset($_SESSION['item-quantity']) ? $_SESSION['item-quantity'] : $_SESSION['item-quantity'] = "0";?></span></td>
 </tr>
 <tr class="shipping">
 <th>Shipping and Handling</th>
@@ -60,7 +51,7 @@ if(isset($_SESSION['product_1'])) {
 
 <tr class="order-total">
 <th>Order Total</th>
-<td><strong><span class="amount">&#36; <?php echo isset($_SESSION['item-total']) ? $_SESSION['item-total'] : $_SESSION['item-total'] = "";?></span></strong> </td>
+<td><strong><span class="amount">&#36; <?php echo isset($_SESSION['item-total']) ? $_SESSION['item-total'] : $_SESSION['item-total'] = "0";?></span></strong> </td>
 </tr>
 
 
